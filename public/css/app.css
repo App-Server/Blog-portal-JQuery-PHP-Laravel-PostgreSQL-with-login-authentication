@@ -1,0 +1,155 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    
+}
+
+.bi {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.theme-body {
+    background-color: rgb(240, 246, 252);
+}
+
+.navtop {
+    background-color: #f1f1f1;
+    height: 6vh;
+    position: fixed;
+    /* Fixa a posição do elemento */
+    top: 0;
+    /* Define a posição inicial a partir do topo */
+    left: 0;
+    /* Define a posição inicial a partir da esquerda */
+    width: 100%;
+    /* Define a largura do elemento como 100% da largura da tela */
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #0058b1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar-grid {
+    margin-top: 15px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #acc9ff;
+    color: #0058b1;
+    border-radius: 10px;
+}
+
+.main-content {
+    margin-left: 100px;
+    padding: 1px 16px;
+    padding-top: 10px;
+}
+
+@media (min-width: 1064px) {
+    .navbar-response {
+      display: none;
+    }
+}
+
+@media screen and (max-width: 1064px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0px;
+        padding-top: 35px;
+    }
+
+    
+}
+
+.css-btn:active {
+    border-color: #acc9ff;
+}
+
+/* .alert-modal {
+    position: fixed;
+    top: 20px;
+    
+    right: -400px;
+    z-index: 1050;
+    transition: right 0.5s ease;
+}
+.alert-modal.show {
+    right: 20px;
+} */
+
+.cms {
+    color: white;
+    margin-left: 10px;
+}
+
+#timeToRender {
+    position:absolute; 
+    top: 10px; 
+    font-size: 20px; 
+    font-weight: bold; 
+    background-color: #d85757;
+    padding: 0px 4px;
+    color: #ffffff;
+}
+
+#openModalBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modaldelete {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalcontent {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
