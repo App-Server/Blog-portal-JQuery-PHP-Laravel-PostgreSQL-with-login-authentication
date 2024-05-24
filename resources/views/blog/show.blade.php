@@ -9,14 +9,16 @@
     <div class="container">
         <h3>Blog Show</h3>
         <div class="card">
-            <h5 class="card-header">Register</h5>
+            <h5 class="card-header">
+                <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-outline-success" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Edit</a>
+            </h5>
             <div class="card-body">
               <p class="card-text"><i class="bi bi-list-ol"></i><strong> Id: </strong>{{ $blog->id }}</p>
               <p class="card-text"><i class="bi bi-calendar-check"></i><strong> Create: </strong> {{ $blog->created_at }}</p>
               <p class="card-text"><i class="bi bi-calendar-check"></i><strong> Update: </strong> {{ $blog->updated_at }}</p>
-              <p class="card-text"><i class="bi bi-body-text"></i><strong> Title: </strong> {{ $blog->name }}</p>
+              <p class="card-text"><i class="bi bi-card-text"></i><strong> Title: </strong> {{ $blog->name }}</p>
               <hr>
-              <p class="card-text"><i class="bi bi-card-text"></i><strong> Pots: </strong> {{ $blog->post }}</p> 
+              <p class="card-text"><i class="bi bi-card-text"></i><strong> Post: </strong> {{ $blog->post }}</p> 
               <button class="openModalButton btn btn-outline-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Delete</button>
 
                 <div class="modaldelete" style="display:none;">
@@ -33,15 +35,10 @@
                                 Delete
                             </button>
                         </form>
+                        
+                        </div>
                     </div>
                 </div>             
-              {{-- <form action="{{ route('blog.destroy', $blog->id) }}" method="POST">
-                @method('DELETE')
-                @csrf
-                <button type="submit"class="btn btn-outline-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                    Delete
-                </button>
-            </form> --}}
         </div>
     </div>  
 </div>

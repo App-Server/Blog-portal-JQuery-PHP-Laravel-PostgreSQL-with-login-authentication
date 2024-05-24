@@ -27,7 +27,7 @@
                     <form action="{{ route('blog.store') }}" method="post" id="loginForm">
                         @csrf
                         <div class="mb-3">
-                            <label for="exampleInputText1" class="form-label"><i class="bi bi-body-text"></i>Title</label>
+                            <label for="exampleInputText1" class="form-label"><i class="bi bi-card-text"></i>Title</label>
                             <input type="text" name="name" placeholder="Title" id="title" class="form-control" id="exampleInputText1" aria-describedby="textHelp" value="{{ old('title') }}">
                             <div class="invalid-feedback">
                                 Please provide a title.
@@ -39,7 +39,7 @@
                         </div><br> --}}
                         <div class="mb-3">
                             <div class="form-floating">
-                                <textarea class="form-control" id="comments" name="post" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 400px" value="{{ old('title') }}"></textarea>
+                                <textarea class="form-control" id="comments" name="post" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 400px" value="{{ old('post') }}"></textarea>
                                 <label for="floatingTextarea2"><i class="bi bi-card-text"></i>Comments</label>
                                 <div class="invalid-feedback">
                                     Please provide a Comments.

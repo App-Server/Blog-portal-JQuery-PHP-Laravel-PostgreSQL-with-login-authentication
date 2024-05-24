@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
@@ -7,6 +8,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\SettingsController;
+use App\Models\Comment;
+use Faker\Guesser\Name;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +46,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::get('/settings/create', [SettingsController::class, 'create'])->name('settings.create');
     Route::post('/settings', [SettingsController::class, 'store'])->name('settings.store');
+
+    Route::put('/comments/{user}/{id}', [CommentController::class, 'update'])->name('comments.update');
+    Route::get('/users/{id}/comments/create', [CommentController::class, 'create'])->name('comments.create');
+    Route::get('/users/{user}/comments/{id}', [CommentController::class, 'edit'])->name('comments.edit');
+    Route::post('/users/{id}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::get('/users/{id}/comments', [CommentController::class, 'index'])->name('comments.index');
 });
 
 Route::get('/support', function() {

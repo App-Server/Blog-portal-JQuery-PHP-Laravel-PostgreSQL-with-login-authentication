@@ -47,20 +47,27 @@
                 document.getElementById('searchForm').submit();
             });
         </script>
-        
-        <div class="row">
-            @foreach ($users as $user)
-            <div class="col-md-6 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <label for="validationCustom02" class="form-label"><i class="bi bi-person-bounding-box"></i><strong>Nome</strong></label>
+
+        <div class="card" style="width: 100%;">
+                        
+            <ul class="list-group list-group-flush">
+                @foreach ($users as $user)
+                    <li class="list-group-item">
                         <br>
-                        <label for="validationCustom02" class="form-label">{{ $user->name }}</label>
-                        <br>
-                        <label for="validationCustom02" class="form-label"><i class="bi bi-envelope-at"></i><strong>Email</strong></label>
-                        <br>
-                        <label for="validationCustom02" class="form-label">{{ $user->email }}</label>
-                        <br>
+                        <p><i class="bi bi-person-bounding-box"></i><strong>Nome:</strong>{{ $user->name }}</p>
+                        
+                        <p><i class="bi bi-envelope-at"></i><strong>Email:</strong>{{ $user->email }}</p>
+                        {{-- <div class="row g-3 needs-validation" >
+                            
+                            <label for="validationCustom02" class="form-label"><i class="bi bi-person-bounding-box"></i><strong>Nome</strong></label>
+                            
+                            <label for="validationCustom02" class="form-label">{{ $user->name }}</label>
+                            
+                            <label for="validationCustom02" class="form-label"><i class="bi bi-envelope-at"></i><strong>Email</strong></label>
+                            <br>
+                            <label for="validationCustom02" class="form-label">{{ $user->email }}</label>
+                            <br>
+                        </div> --}}
                         <div class="container text-left">
                             <div class="row">
                               <div class="col">
@@ -73,6 +80,16 @@
                                     </button></a>
                                 </label>
                                 <br>
+                              </div>
+                              <div class="col">
+                                <label for="validationCustomUsername" class="form-label"><strong>Comment</strong></label>
+                                <br>
+                                <label for="validationCustomUsername" class="form-label">
+                                    <a href="{{ route('comments.index', $user->id ) }}"><button type="button" class="btn btn-outline-secondary"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                        Comment
+                                    </button></a>
+                                </label>
                               </div>
                               <div class="col">
                                 <label for="validationCustomUsername" class="form-label"><strong>Edit</strong></label>
@@ -122,16 +139,106 @@
                                 </div> --}}
                             </div>
                         </div>
+                    </li>
+                @endforeach
+                
+            </ul>
+        </div>
+        <div class="container">
+            <div class="py-4">
+                {{ $users->links() }}
+            </div>
+        </div>       
+        {{-- <div class="row">
+            @foreach ($users as $user)
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <label for="validationCustom02" class="form-label"><i class="bi bi-person-bounding-box"></i><strong>Nome</strong></label>
+                        <br>
+                        <label for="validationCustom02" class="form-label">{{ $user->name }}</label>
+                        <br>
+                        <label for="validationCustom02" class="form-label"><i class="bi bi-envelope-at"></i><strong>Email</strong></label>
+                        <br>
+                        <label for="validationCustom02" class="form-label">{{ $user->email }}</label>
+                        <br>
+                        <div class="container text-left">
+                            <div class="row">
+                              <div class="col">
+                                <label for="validationCustomUsername" class="form-label"><strong>View</strong></label>
+                                <br>
+                                <label for="validationCustomUsername" class="form-label">
+                                    <a href="{{ route('users.show', $user->id ) }}"><button type="button" class="btn btn-outline-success"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                        Details
+                                    </button></a>
+                                </label>
+                                <br>
+                              </div>
+                              <div class="col">
+                                <label for="validationCustomUsername" class="form-label"><strong>Comment</strong></label>
+                                <br>
+                                <label for="validationCustomUsername" class="form-label">
+                                    <a href="{{ route('comments.index', $user->id ) }}"><button type="button" class="btn btn-outline-secondary"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                        Comments (0)
+                                    </button></a>
+                                </label>
+                              </div>
+                              <div class="col">
+                                <label for="validationCustomUsername" class="form-label"><strong>Edit</strong></label>
+                                <br>
+                                <label for="validationCustomUsername" class="form-label">
+                                    <a href="{{ route('users.edit', $user->id ) }}"><button type="submit" class="btn btn-outline-primary"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Edit</button></a>
+                                </label>
+                                <br>
+                              </div>
+                              <div class="col">
+                                <label for="validationCustomUsername" class="form-label"><strong>Delete</strong></label>
+                                <br>
+                                <button class="openModalButton btn btn-outline-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Delete</button>
+
+                                <div class="modaldelete" style="display:none;">
+                                    <div class="modalcontent">
+                                        <span class="close">&times;</span>
+                                        <h2 style="color: red"><i class="bi bi-exclamation-triangle" style="font-size: 30px"></i>Atenção</h2>
+                                        <hr style="color: red">
+                                        <p style="color: red">Você está prestes a excluir um usuário. Tem certeza de que deseja continuar?</p>
+                                        <hr style="color: red">
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-outline-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                                {{-- <div class="col">
+                                    <label for="validationCustomUsername" class="form-label"><strong>Delete</strong></label>
+                                    <br>
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit"class="btn btn-outline-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                            Delete
+                                        </button>
+                                    </form>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             @endforeach
-            <div class="container">
-                <div class="py-4">
-                    {{ $users->links() }}
-                </div>
-            </div>
-        </div>
+            
+        </div> --}}
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
