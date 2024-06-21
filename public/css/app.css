@@ -12,7 +12,7 @@
 }
 
 .theme-body {
-    background-color: rgb(240, 246, 252);
+    background-color: rgb(255, 255, 255);
 }
 
 .navtop {
@@ -30,7 +30,7 @@
 
 .sidebar {
     width: 220px;
-    background-color: #0058b1;
+    background-color:#0b2266;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -48,9 +48,9 @@
 }
 
 .sidebar a:hover:not(.active) {
-    background-color: #acc9ff;
+    background-color: #ffffff;
     color: #0058b1;
-    border-radius: 10px;
+    
 }
 
 .main-content {
